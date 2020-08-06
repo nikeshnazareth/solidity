@@ -473,7 +473,7 @@
 //         let i := _1
 //         for { } lt(i, length) { i := add(i, 1) }
 //         {
-//             abi_encode_t_array$_t_contract$_C_$55_$3_memory_to_t_array$_t_address_$3_memory_ptr(mload(srcPtr), pos)
+//             abi_encode_t_array$_t_contract$_C_$55_$3_memory(mload(srcPtr), pos)
 //             srcPtr := add(srcPtr, 0x20)
 //             pos := add(pos, 0x60)
 //         }
@@ -483,15 +483,15 @@
 //         let offset := calldataload(add(_4, 64))
 //         let _5 := 0xffffffffffffffff
 //         if gt(offset, _5) { revert(_1, _1) }
-//         let value2 := abi_decode_t_array$_t_uint256_$dyn_memory_ptr(add(_4, offset), _3)
+//         let value2 := abi_decode_t_array$_t_uint256_$dyn(add(_4, offset), _3)
 //         let offset_1 := calldataload(add(_4, 0x60))
 //         if gt(offset_1, _5) { revert(_1, _1) }
-//         let value3 := abi_decode_t_array$_t_array$_t_uint256_$2_memory_$dyn_memory_ptr(add(_4, offset_1), _3)
+//         let value3 := abi_decode_t_array$_t_array$_t_uint256_$2_memory_$dyn(add(_4, offset_1), _3)
 //         sstore(calldataload(_4), calldataload(add(_4, 0x20)))
 //         sstore(value2, value3)
 //         sstore(_1, pos)
 //     }
-//     function abi_decode_t_array$_t_array$_t_uint256_$2_memory_$dyn_memory_ptr(offset, end) -> array
+//     function abi_decode_t_array$_t_array$_t_uint256_$2_memory_$dyn(offset, end) -> array
 //     {
 //         let _1 := 0x1f
 //         if iszero(slt(add(offset, _1), end)) { revert(array, array) }
@@ -526,7 +526,7 @@
 //             src := _5
 //         }
 //     }
-//     function abi_decode_t_array$_t_uint256_$dyn_memory_ptr(offset, end) -> array
+//     function abi_decode_t_array$_t_uint256_$dyn(offset, end) -> array
 //     {
 //         if iszero(slt(add(offset, 0x1f), end)) { revert(array, array) }
 //         let length := calldataload(offset)
@@ -545,7 +545,7 @@
 //             src := add(src, _1)
 //         }
 //     }
-//     function abi_encode_t_array$_t_contract$_C_$55_$3_memory_to_t_array$_t_address_$3_memory_ptr(value, pos)
+//     function abi_encode_t_array$_t_contract$_C_$55_$3_memory(value, pos)
 //     {
 //         let srcPtr := value
 //         let i := 0

@@ -8,6 +8,9 @@ Compiler Features:
 
 Bugfixes:
 
+Compiler Features:
+ * Yul Optimizer: Try to simplify function names.
+
 
 ### 0.7.1 (2020-09-02)
 

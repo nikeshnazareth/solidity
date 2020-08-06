@@ -40,12 +40,12 @@ object "Arraysum_33" {
                             vloc_sum := checked_add_t_uint256(vloc_sum, extract_from_storage_value_dynamict_uint256(sload(_3), _4))
                         }
                         let memPos := allocateMemory(_1)
-                        return(memPos, sub(abi_encode_tuple_t_uint256__to_t_uint256__fromStack(memPos, _1), memPos))
+                        return(memPos, sub(abi_encode_uint256_(memPos, _1), memPos))
                     }
                 }
                 revert(0, 0)
             }
-            function abi_encode_tuple_t_uint256__to_t_uint256__fromStack(headStart, value0) -> tail
+            function abi_encode_uint256_(headStart, value0) -> tail
             {
                 tail := add(headStart, 32)
                 mstore(headStart, value0)
