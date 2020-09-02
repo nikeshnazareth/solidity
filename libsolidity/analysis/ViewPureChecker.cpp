@@ -261,8 +261,10 @@ void ViewPureChecker::reportMutability(
 	{
 		// We do not warn for library functions because they cannot be payable anyway.
 		// Also internal functions should be allowed to use `msg.value`.
-		if (m_currentFunction->isPublic() && !m_currentFunction->libraryFunction())
+		if ((m_currentFunction->isConstructor() || m_currentFunction->isPublic()) && !m_currentFunction->libraryFunction())
 		{
+			string kind = m_currentFunction->isConstructor() ? "constructor" : "function";
+			string mutability = m_currentFunction->isConstructor() ? "payable" : "payable public";
 			if (_nestedLocation)
 				m_errorReporter.typeError(
 					4006_error,
@@ -274,8 +276,8 @@ void ViewPureChecker::reportMutability(
 				m_errorReporter.typeError(
 					5887_error,
 					_location,
-					"\"msg.value\" and \"callvalue()\" can only be used in payable public functions. Make the function "
-					"\"payable\" or use an internal function to avoid this error."
+					"\"msg.value\" and \"callvalue()\" can only be used in " + mutability + " " + kind + "s. Make the " + kind + " " +
+					"\"payable\"" +  (m_currentFunction->isConstructor() ? "." : " or use an internal " + kind + " to avoid this error.")
 				);
 			m_errors = true;
 		}
