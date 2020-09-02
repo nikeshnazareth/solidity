@@ -141,8 +141,6 @@ private:
 	/// in a given _source.
 	void defineInterfacesAndSummaries(SourceUnit const& _source);
 
-	/// Genesis predicate.
-	smtutil::Expression genesis() { return (*m_genesisPredicate)({}); }
 	/// Interface predicate over current variables.
 	smtutil::Expression interface();
 	smtutil::Expression interface(ContractDefinition const& _contract);
@@ -259,9 +257,6 @@ private:
 
 	/// Predicates.
 	//@{
-	/// Genesis predicate.
-	Predicate const* m_genesisPredicate = nullptr;
-
 	/// Implicit constructor predicate.
 	/// Explicit constructors are handled as functions.
 	Predicate const* m_implicitConstructorPredicate = nullptr;
@@ -352,7 +347,7 @@ private:
 	//@}
 
 	/// CHC solver.
-	std::unique_ptr<smtutil::CHCSolverInterface> m_interface;
+	std::unique_ptr<smtutil::CHCSolverInterface> m_interface = nullptr;
 
 	/// ErrorReporter that comes from CompilerStack.
 	langutil::ErrorReporter& m_outerErrorReporter;
